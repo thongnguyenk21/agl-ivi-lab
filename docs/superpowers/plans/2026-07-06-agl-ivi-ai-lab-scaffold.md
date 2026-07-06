@@ -6,7 +6,7 @@
 
 **Architecture:** Keep executable Python code in one source package and keep tests beside the project root. Store version-controlled settings separately from local model and data artifacts, while root documentation and `AGENTS.md` define the workflow for humans and coding agents.
 
-**Tech Stack:** Python 3.11+, standard-library `unittest`, TOML project metadata, Git
+**Tech Stack:** Python 3.10+, standard-library `unittest`, TOML project metadata, Git
 
 ---
 
@@ -39,7 +39,7 @@ logs, local secrets, datasets, and model binaries.
 Run:
 
 ```bash
-python3 -c "import tomllib; tomllib.load(open('pyproject.toml', 'rb'))"
+python3 -c "from pip._vendor import tomli; tomli.loads(open('pyproject.toml').read())"
 ```
 
 Expected: exit status 0 with no output.
@@ -149,7 +149,7 @@ Expected: all files listed in Tasks 1 through 3 are present.
 Run:
 
 ```bash
-python3 -c "import tomllib; tomllib.load(open('pyproject.toml', 'rb'))"
+python3 -c "from pip._vendor import tomli; tomli.loads(open('pyproject.toml').read())"
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
